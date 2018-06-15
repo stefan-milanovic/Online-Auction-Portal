@@ -1,0 +1,183 @@
+﻿@model IEnumerable<IEP_Project_Web.Models.Auction>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@section auctionsSearchHeader {
+
+    <div class="row">
+        <div class="col-md-12" style="text-align:center">
+            <h3> <b>Search auctions and products  </b></h3>
+            <hr />
+        </div>
+
+        <form class="form-horizontal" name="auctionsSearchForm" method="get" action="@Url.Action("Index", "Home")">
+            <div class="col-md-12 mt-3">
+                <div class="form-group">
+                    <label for="keywords" class="control-label col-md-offset-3 col-md-2"> Keywords </label>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control" id="keywords" aria-describedby="searchHelp" placeholder="Search live auctions, products, and more..." />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="minimumPrice" class="control-label col-md-offset-3 col-md-2"> Minimum price </label>
+                    <div class="col-md-7">
+                        <input type="number" class="form-control" id="minimumPrice" aria-describedby="minimumPriceHelp" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="maximumPrice" class="control-label col-md-offset-3 col-md-2"> Maximum price </label>
+                    <div class="col-md-7">
+                        <input type="number" class="form-control" id="maximumPrice" aria-describedby="maximumPriceHelp" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="statusChoice" class="control-label col-md-offset-3 col-md-2"> Auction status </label>
+                    <div class="col-md-7">
+                        <select class="form-control" id="statusChoice">
+                            <option default> Select a status </option>
+                            <option> Opened </option>
+                            <option> Completed </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-5 col-md-1">
+                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"> </span> Search </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <hr />
+}
+
+<!-- sablon za jedan -->
+<div class="row" style="margin-top: 50px">
+    <div class="col-md-3">
+        <div class="card">
+            <img src="https://www.w3schools.com/howto/img_avatar.png" style="width: 100%" />
+            <div class="container" style="text-align:center">
+                <h3 style="color: cadetblue"> Item name </h3>
+                <hr />
+                <h4> 00:00:10 </h4>
+                <h4 style="color: forestgreen"> $3.00 </h4>
+                <h5> <i> User </i> </h5>
+                <button class="bid-now-button-image" onclick=""> </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card">
+            <img src="https://www.w3schools.com/howto/img_avatar.png" style="width: 100%" />
+            <div class="container" style="text-align:center">
+                <h3 style="color: cadetblue"> Item name </h3>
+                <hr />
+                <h4> 00:00:10 </h4>
+                <h4 style="color: forestgreen"> $3.00 </h4>
+                <h5> <i> User </i> </h5>
+                <button class="bid-now-button-image" onclick=""> </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- no button -->
+    <div class="col-md-3">
+        <div class="card">
+            <img src="https://www.w3schools.com/howto/img_avatar.png" style="width: 100%" />
+            <div class="container" style="text-align:center">
+                <h3 style="color: cadetblue"> Item name </h3>
+                <hr />
+                <h4> 00:00:10 </h4>
+                <h4 style="color: forestgreen"> $3.00 </h4>
+                <h5> <i> User </i> </h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card">
+            <img src="https://www.w3schools.com/howto/img_avatar.png" style="width: 100%" />
+            <div class="container" style="text-align:center">
+                <h3 style="color: cadetblue"> Item name </h3>
+                <hr />
+                <h4> 00:00:10 </h4>
+                <h4 style="color: forestgreen"> $3.00 </h4>
+                <h5> <i> User </i> </h5>
+                <button class="sold-out-button-image" disabled></button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@{
+    var auctionCount = ViewBag.AuctionsList.Count;
+    int i = 0;
+    foreach (var auction in ViewBag.AuctionsList)
+    {
+        if (i == 0)
+        {
+            @:<div class="row" style="margin-top: 50px"> 
+        }
+        <div class="col-md-3">
+            <div class="card">
+                <img src="data:image;base64,@System.Convert.ToBase64String(auction.Image)" style="width: 100%" />
+                <div class="container" style="text-align:center">
+
+                    <h3> <a href="Auctions/Details/@auction.AuctionId" style="color: cadetblue"> @auction.Name </a></h3>
+                    <hr />
+                    <h4> 00:00:10 </h4>
+                    <h4 style="color: forestgreen"> $ @auction.CurrentPrice </h4>
+                    <h5> <i> User </i> </h5>
+
+                    @if (auction.Status == "OPENED")
+                    {
+                        @:<button class="bid-now-button-image" onclick="Auctions/BidOn/@auction.AuctionId?currentUserTODO"></button>
+                    }
+                    else
+                    { 
+                        @: <button class="sold-out-button-image" disabled></button>
+                    }
+                </div>
+            </div>
+        </div>
+        if (i == 3)
+        {
+            @: </div>
+            i = 0;
+        }
+        else {
+            i++;
+            if (i == auctionCount)
+            {
+                @: </div>
+            }
+        }
+    }
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>
+            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+            enables a clean separation of concerns and gives you full control over markup
+            for enjoyable, agile development.
+        </p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>

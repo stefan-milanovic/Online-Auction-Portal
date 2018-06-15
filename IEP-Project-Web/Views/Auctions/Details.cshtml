@@ -1,0 +1,156 @@
+﻿@model IEP_Project_Web.Models.Auction
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Auction - @Model.Name</h4>
+    <hr />
+
+    <div class="row" style="margin-top: 50px">
+        <div class="col-offset-5 col-md-6">
+            <div class="card">
+                <img src="data:image;base64,@System.Convert.ToBase64String(Model.Image)" style="width: 100%" />
+                <div class="container" style="text-align:center">
+
+                    <h3 style="color: cadetblue"> @Model.Name </h3>
+                    <hr />
+                    <h4> 00:00:10 </h4>
+                    <h4 style="color: forestgreen"> $ @Model.CurrentPrice </h4>
+                    <h5> <i> User </i> </h5>
+
+                    <!-- videti sta ako je korisnik poslednji koji je bidovao -->
+                    @if (Model.Status == "OPENED")
+                    {
+                        @:<button class="bid-now-button-image" onclick="Auctions/BidOn/@Model.AuctionId?currentUserTODO"></button>
+                    }
+                    else
+                    {
+                        @: <button class="sold-out-button-image" disabled></button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 50px">
+        <div class="col-md-12">
+            <table class="table" style="width: 100%">
+                <tr>
+                    <th>
+                        User
+                    </th>
+                    <th>
+                        Tokens
+                    </th>
+                    <th>
+                        Created At
+                    </th>
+                </tr>
+                @{ 
+                    if (Model.Bids != null)
+                    {
+                        foreach (var bid in Model.Bids)
+                        {
+                        <tr>
+                            <td>
+                                <i> @bid.User.Name &nbsp; @bid.User.Surname (@bid.User.Email)</i>
+                            </td>
+                            <td>
+                                @bid.Tokens
+                            </td>
+                            <td>
+                                @bid.CreatedAt
+                            </td>
+                        </tr>
+                            }
+                        }
+                    }
+            </table>
+            
+            </div>
+    </div>
+
+<dl class="dl-horizontal">
+    <dt>
+        @Html.DisplayNameFor(model => model.Name)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Name)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Image)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Image)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Duration)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Duration)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.StartingPrice)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.StartingPrice)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.CurrentPrice)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.CurrentPrice)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.CreatedAt)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.CreatedAt)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.OpenedAt)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.OpenedAt)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.ClosedAt)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.ClosedAt)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Status)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Status)
+    </dd>
+
+</dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AuctionId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
