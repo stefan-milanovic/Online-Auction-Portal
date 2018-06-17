@@ -190,9 +190,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AuctionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TokenOrdersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -216,6 +218,18 @@
     <Compile Include="Migrations\201806140943147_Updated database fields.Designer.cs">
       <DependentUpon>201806140943147_Updated database fields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806152050421_Added portal parameters table.cs" />
+    <Compile Include="Migrations\201806152050421_Added portal parameters table.Designer.cs">
+      <DependentUpon>201806152050421_Added portal parameters table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806152115556_Parameter table typo fix.cs" />
+    <Compile Include="Migrations\201806152115556_Parameter table typo fix.Designer.cs">
+      <DependentUpon>201806152115556_Parameter table typo fix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806170000415_Added Auction Winners Table.cs" />
+    <Compile Include="Migrations\201806170000415_Added Auction Winners Table.Designer.cs">
+      <DependentUpon>201806170000415_Added Auction Winners Table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AuctionCreateViewModel.cs" />
@@ -224,6 +238,7 @@
     <Compile Include="Models\BidModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PortalParameters.cs" />
     <Compile Include="Models\TokenOrderModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -232,6 +247,11 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\bid-now-button.png" />
+    <Content Include="Content\images\buy-now-button.png" />
+    <Content Include="Content\images\gold-package.png" />
+    <Content Include="Content\images\open-button.png" />
+    <Content Include="Content\images\platinum-package.png" />
+    <Content Include="Content\images\silver-package.png" />
     <Content Include="Content\images\sold-out-button.png" />
     <Content Include="Content\site.css" />
     <Content Include="favicon.ico" />
@@ -294,6 +314,11 @@
     <Content Include="Views\Auctions\Details.cshtml" />
     <Content Include="Views\Auctions\Edit.cshtml" />
     <Content Include="Views\Auctions\Index.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\ReviewAuctions.cshtml" />
+    <Content Include="Views\Auctions\WonAuctions.cshtml" />
+    <Content Include="Views\TokenOrders\PurchaseTokens.cshtml" />
+    <Content Include="Views\TokenOrders\MyTokenOrders.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -326,6 +351,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806140943147_Updated database fields.resx">
       <DependentUpon>201806140943147_Updated database fields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806152050421_Added portal parameters table.resx">
+      <DependentUpon>201806152050421_Added portal parameters table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806152115556_Parameter table typo fix.resx">
+      <DependentUpon>201806152115556_Parameter table typo fix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806170000415_Added Auction Winners Table.resx">
+      <DependentUpon>201806170000415_Added Auction Winners Table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

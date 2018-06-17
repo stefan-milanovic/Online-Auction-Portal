@@ -64,3 +64,29 @@ textarea {
     margin-bottom: 10px;
     border-radius: 10px;
 }
+
+.open-button-image {
+    background-image: url( 'images/open-button.png ');
+    background-size: 150px 50px;
+    height: 45px;
+    width: 150px;
+    border: none;
+    background-color: white;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.buy-now-button-image {
+    background-image: url( 'images/buy-now-button.png ');
+    background-size: 150px 50px;
+    height: 45px;
+    width: 150px;
+    border: none;
+    background-color: white;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}

@@ -22,16 +22,17 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @*<li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
 
                     <li>@Html.ActionLink("Account Settings", "ChangeSettings", "Account") </li>
-                    <li>@Html.ActionLink("Purchase tokens", "", "") </li>
-                    <li>@Html.ActionLink("My token orders", "Tokens", "Account") </li>
+                    <li>@Html.ActionLink("Purchase tokens", "PurchaseTokens", "TokenOrders") </li>
+                    <li>@Html.ActionLink("My token orders", "MyTokenOrders", "TokenOrders") </li>
                     <li>@Html.ActionLink("New auction", "Create", "Auctions") </li>
-                    <li>@Html.ActionLink("My won auctions", "WonAuctions", "Auctions") </li>
+                    <li>@Html.ActionLink("My won auctions", "WonAuctions", "Auuctions") </li>
 
-                    <li>@Html.ActionLink("Review ready auctions", "ReadyAuctions", "Auctions") </li>
+                    <li>@Html.ActionLink("Portal parameters", "Index", "Admin") </li>
+                    <li>@Html.ActionLink("Review ready auctions", "ReviewAuctions", "Admin") </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

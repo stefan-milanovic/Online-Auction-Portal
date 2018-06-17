@@ -12,7 +12,7 @@
     <hr />
 
     <div class="row" style="margin-top: 50px">
-        <div class="col-offset-5 col-md-6">
+        <div class="col-md-offset-3 col-md-6">
             <div class="card">
                 <img src="data:image;base64,@System.Convert.ToBase64String(Model.Image)" style="width: 100%" />
                 <div class="container" style="text-align:center">
@@ -38,8 +38,8 @@
     </div>
 
     <div class="row" style="margin-top: 50px">
-        <div class="col-md-12">
-            <table class="table" style="width: 100%">
+        <div class="col-md-offset-2 col-md-8">
+            <table class="table" style="width: 100%;">
                 <tr>
                     <th>
                         User
@@ -75,82 +75,8 @@
             </div>
     </div>
 
-<dl class="dl-horizontal">
-    <dt>
-        @Html.DisplayNameFor(model => model.Name)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.Name)
-    </dd>
-
-    <dt>
-        @Html.DisplayNameFor(model => model.Image)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.Image)
-    </dd>
-
-    <dt>
-        @Html.DisplayNameFor(model => model.Duration)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.Duration)
-    </dd>
-
-    <dt>
-        @Html.DisplayNameFor(model => model.StartingPrice)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.StartingPrice)
-    </dd>
-
-    <dt>
-        @Html.DisplayNameFor(model => model.CurrentPrice)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.CurrentPrice)
-    </dd>
-
-    <dt>
-        @Html.DisplayNameFor(model => model.CreatedAt)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.CreatedAt)
-    </dd>
-
-    <dt>
-        @Html.DisplayNameFor(model => model.OpenedAt)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.OpenedAt)
-    </dd>
-
-    <dt>
-        @Html.DisplayNameFor(model => model.ClosedAt)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.ClosedAt)
-    </dd>
-
-    <dt>
-        @Html.DisplayNameFor(model => model.Status)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.Status)
-    </dd>
-
-</dl>
 </div>
-<p>
+@*<p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.AuctionId }) |
     @Html.ActionLink("Back to List", "Index")
-</p>
+</p>*@

@@ -47,6 +47,10 @@ namespace IEP_Project_Web.Models
         
         public virtual DbSet<Bid> Bids { get; set; }
 
+        public virtual DbSet<PortalParameters> PortalParameters { get; set; }
+
+        public virtual DbSet<AuctionWinners> AuctionWinners { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

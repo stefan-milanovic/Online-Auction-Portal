@@ -1,0 +1,49 @@
+﻿@model IEnumerable<IEP_Project_Web.Models.Auction>
+
+@{
+    ViewBag.Title = "Review Auctions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Review Ready Auctions</h2>
+
+@{
+    var auctionCount = ViewBag.AuctionsToReview.Count;
+    int i = 0;
+    foreach (var auction in ViewBag.AuctionsToReview)
+    {
+        if (i == 0)
+        {
+            @:<div class="row" style="margin-top: 50px">
+            }
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="data:image;base64,@System.Convert.ToBase64String(auction.Image)" style="width: 100%" />
+                    <div class="container" style="text-align:center">
+
+                        <h3> <a href="Auctions/Details/@auction.AuctionId" style="color: cadetblue"> @auction.Name </a></h3>
+                        <hr />
+                        <h4> 00:00:10 </h4>
+                        <h4 style="color: forestgreen"> $ @auction.CurrentPrice </h4>
+                        <h5> <i> No Bidders Yet </i> </h5>
+
+                        <button class="open-button-image" onclick="Admin/OpenAuction/@auction.AuctionId"></button>
+                        
+                    </div>
+                </div>
+            </div>
+            if (i == 3)
+            {
+                @: </div>
+            i = 0;
+        }
+        else
+        {
+            i++;
+            if (i == auctionCount)
+            {
+                @: </div>
+            }
+        }
+    }
+}

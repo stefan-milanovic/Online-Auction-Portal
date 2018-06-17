@@ -8,12 +8,28 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using IEP_Project_Web.Models;
+using Microsoft.AspNet.Identity;
 
 namespace IEP_Project_Web.Controllers
 {
     public class AuctionsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
+        public ActionResult WonAuctions()
+        {
+
+            using (var dbContext = ApplicationDbContext.Create())
+            {
+                var currentUser = User.Identity.GetUserId();
+                var auctionsListQuery = from aw in dbContext.AuctionWinners
+                                        join a in dbContext.Auctions on aw.Auction.AuctionId equals a.AuctionId
+                                        where aw.Winner.Id == currentUser
+                                        select a;
+                ViewBag.AuctionsList = auctionsListQuery.ToList();
+            }
+            return View();
+        }
 
         // GET: Auctions
         public ActionResult Index()

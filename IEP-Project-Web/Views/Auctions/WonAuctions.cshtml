@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "WonAuctions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>My Won Auctions</h2>
+
+@{
+    var auctionCount = ViewBag.AuctionsList.Count;
+    int i = 0;
+    foreach (var auction in ViewBag.AuctionsList)
+    {
+        if (i == 0)
+        {
+            @:<div class="row" style="margin-top: 50px">
+            }
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="data:image;base64,@System.Convert.ToBase64String(auction.Image)" style="width: 100%" />
+                    <div class="container" style="text-align:center">
+
+                        <h3> <a href="Auctions/Details/@auction.AuctionId" style="color: cadetblue"> @auction.Name </a></h3>
+                        <hr />
+                        <h4> 00:00:10 </h4>
+                        <h4 style="color: forestgreen"> $ @auction.CurrentPrice </h4>
+                        <h5> <i> User </i> </h5>
+                        <button class="sold-out-button-image" disabled></button>
+                        
+                    </div>
+                </div>
+            </div>
+            if (i == 3)
+            {
+                @: </div>
+            i = 0;
+        }
+        else
+        {
+            i++;
+            if (i == auctionCount)
+            {
+                @: </div>
+            }
+        }
+    }
+}

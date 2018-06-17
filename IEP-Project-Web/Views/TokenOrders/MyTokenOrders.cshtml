@@ -1,0 +1,42 @@
+﻿@model IEnumerable<IEP_Project_Web.Models.TokenOrder>
+
+@{
+    ViewBag.Title = "My Toke nOrders";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>My Token Orders</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Tokens)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tokens)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @if (item.Status == "SUBMITTED") { <span style="color: yellow"> @Html.DisplayFor(modelItem => item.Status) </span> }
+            else if (item.Status == "CANCELLED") { <span style="color: red"> @Html.DisplayFor(modelItem => item.Status) </span> }
+            else if (item.Status == "COMPLETED") { <span style="color: lawngreen"> @Html.DisplayFor(modelItem => item.Status) </span> }
+
+        </td>
+    </tr>
+}
+
+</table>

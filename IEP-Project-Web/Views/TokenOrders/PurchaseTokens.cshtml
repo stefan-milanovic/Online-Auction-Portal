@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Purchase Tokens";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Purchase Tokens</h2>
+
+<div class="row" style="margin-top: 50px">
+
+    <div class="col-md-4">
+        <div class="card">
+            <img src="~/Content/images/silver-package.png" style="width: 100%" />
+            <div class="container" style="text-align:center">
+                <h3 style="color: silver"> Silver Package </h3>
+                <hr />
+                <h4 style="color: cadetblue"> @ViewBag.SilverTokens Tokens </h4>
+                <h4 style="color: forestgreen"> @ViewBag.SilverValue </h4>
+                <hr />
+                <input type="button" class="buy-now-button-image" onclick="location.href='@Url.Action("AttemptPurchase", "TokenOrders", new { tokens = ViewBag.SilverTokens, price = ViewBag.SilverValue})'" />
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <img src="~/Content/images/gold-package.png" style="width: 100%" />
+            <div class="container" style="text-align:center">
+                <h3 style="color: silver"> Gold Package </h3>
+                <hr />
+                <h4 style="color: cadetblue"> @ViewBag.GoldTokens Tokens </h4>
+                <h4 style="color: forestgreen"> @ViewBag.GoldValue </h4>
+                <hr />
+                <button class="buy-now-button-image" onclick="TokenOrders/AttemptPurchase/@ViewBag.GoldTokens?@ViewBag.GoldValue"> </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <img src="~/Content/images/platinum-package.png" style="width: 100%" />
+            <div class="container" style="text-align:center">
+                <h3 style="color: silver"> Platinum Package </h3>
+                <hr />
+                <h4 style="color: cadetblue"> @ViewBag.PlatinumTokens Tokens </h4>
+                <h4 style="color: forestgreen"> @ViewBag.PlatinumValue </h4>
+                <hr />
+                <button class="buy-now-button-image" onclick="TokenOrders/AttemptPurchase/@ViewBag.PlatinumTokens?@ViewBag.PlatinumValue"> </button>
+            </div>
+        </div>
+    </div>
+
+</div>
